@@ -1,4 +1,6 @@
-/* Menu Makeover */
+/**
+ * Menu jquery menu_makeover plugin
+ */
 (function($) {
 	$.fn.menu_makeover= function(settings) {
     settings = jQuery.extend({
@@ -21,13 +23,10 @@
         }
           
       });
-      
- 
     }
  
  
 	  $(this).children().each(function(){
-	    
       var submenu_timer = false;
       var showing  = false;
       var shown = false;
@@ -35,23 +34,18 @@
       $(this).data('showing',false);
       $(this).data('shown',false);
       $(this).data('hiding',false);
-      
       function print_this(){
       	//console.log(this);	
      	}
 	    var _parent = parent;
       var submenu = $(this).find('>ul');
- 
-	    
 	    if(submenu.get(0)!=undefined){
 	      this.submenu = submenu;
 	      submenu.each(function(){
  
 	        $(this).hover(
     	      function(){
-    
     	         if(submenu_timer){clearTimeout(submenu_timer); submenu_timer = false}
-    	         
     	      }, 
     	      function(){
               submenu_timer = setTimeout(function(){
@@ -152,11 +146,6 @@
 	      
 	      document.location= $(this).find('>a').attr('href');  
 	    });  
-	    
-
-	    
-	    
-	    
 	  })
 
 	
@@ -180,17 +169,16 @@
 	 	}	
  		  
 	};
-
-
 	
-	
+  /* debug function */
+  function debug(str){
+    if($('#debug').get(0)==undefined){
+      $('body').append('<div id="debug" style="position:absolute;top:0;left:0;z-index:100"></div>');    
+    }
+    $('#debug').append('<div>' + str + '</div>');
+    
+  }
+
 })(jQuery);  	  
 
 
-function debug(str){
-  if($('#debug').get(0)==undefined){
-    $('body').append('<div id="debug" style="position:absolute;top:0;left:0;z-index:100"></div>');    
-  }
-  $('#debug').append('<div>' + str + '</div>');
-  
-}
